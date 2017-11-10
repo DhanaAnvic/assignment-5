@@ -55,9 +55,6 @@ public class OrderedList {
         }
         numItems++;
     }
-   
-
-
 
     public int get (int index){
         IntNode1 node = head;
