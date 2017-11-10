@@ -66,7 +66,8 @@ public class OrderedList {
     }
     
     public int remove(int num){
-        return 0;
+        IntNode1 node = head;
+        
     }
 
     /**
