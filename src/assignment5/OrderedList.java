@@ -35,19 +35,29 @@ public class OrderedList {
      
     
     public void add(int num){
-        //adds the first number in the list
-        if(numItems == 0){
-            head = new IntNode1(num);
-        } else {
+        //start at beginning of list
+        IntNode1 node = head;
+        IntNode1 temp = new IntNode1(num);
+        //see if it is the first item
+        if(node == null){
+            head = temp;
+        } else if(num < node.getNum()) {
             IntNode1 n = head;
-            for(int i = 0; i < numItems; i++){
-                if(num <= n.getNum()){
-                    IntNode1 temp = new IntNode1(num);
-                }
-            }
+            head = temp;
+            head.setNext(n);
+        } else {
+            IntNode1 b = null;
+            while (node != null&&num > node.getNum()) {
+                    node = node.getNext();
         }
+            temp.setNext(node);
+            b.setNext(temp);
+        }
+        numItems++;
     }
-        
+   
+
+
 
     public int get (int index){
         IntNode1 node = head;
