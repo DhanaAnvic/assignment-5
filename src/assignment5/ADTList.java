@@ -29,44 +29,47 @@ public class ADTList {
   */
     
     public void add(int index, int num){
-        //adds the number to empty list
-        if(numItems == 0 && index == 0){
-            list[0] = num;
-            //increase the list size
-            numItems++;
-            //adding the number
-        } else if(index <= numItems){
-            //shuflle the contents forward you reach the index
-            for(int i = numItems; i > index; i--){
+       if (index < numItems){
+            //shuffle the contents forward you reach the index
+            for(int i = numItems; i >= index; i--){
+                if(i > 0){
                 list[i] = list[i - 1];
             }
+            }
+            
             //add the number
             list[index] = num;
             //increase the list size
             numItems++;
-        }
-        //double the array size
-        if(numItems == list.length){
+            
+           //if number of items exceeds the length of the array
+        } else if(numItems + 1 > list.length) {
             //create a new array set
             int[] temp = new int [list.length * 2];
-            //copy the old content of the roigianl to the new array
+            //copy the old content of the original to the new array
             for(int i = 0; i < list.length; i--){
                 temp[i] = list[i];
             
         }
-            //points towards the new array
+            //list becomes new array
             list = temp;
         }
+       //place the number in the last position of the array
+       list[numItems] = num;
+       
+       //add 1 to amount of numbers in the array
+       numItems++;
     }
+    
     /**
      * Removes a number from the array
      * @param index the position of the number to remove
      */
     public void remove (int index){
         //check if you can remove it
-        if(numItems > 0 && index < numItems){
-            //shuffle the items backward until you reachh the index
-            for(int i = index; i < numItems; i++){
+        if(index < numItems){
+            //shuffle the items backward until you reach the index
+            for(int i = index; i <= numItems; i++){
                 list[i] = list [i + 1];
             }
             //decrease the list size
@@ -88,13 +91,7 @@ public class ADTList {
       * @return if the list is empty or not
       */
      public boolean isEmpty(){
-         //the list is empty
-       if(numItems == 0){
-           return true;
-           //the list is not empty
-       } else {
-           return false;
-       }
+         return numItems == 0;
     }
     /**
      * Getting the stored number in the array
