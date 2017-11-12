@@ -79,7 +79,19 @@ public class OrderedList {
 
                 numItems--;
                 break;
+                
+                //checkif it removes from the start
+            }else if(node.getNum() == num){
+                head = head.getNext();
+                
+                numItems++;
+                break;
+                
+            } else {
+                //set the new temp node to the next item in the list
+                node = node.getNext();
             }
+            
         }
      }
      
